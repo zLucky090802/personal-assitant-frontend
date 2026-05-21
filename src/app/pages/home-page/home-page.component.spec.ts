@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageComponent } from './home-page.component';
+import { CustomButtonComponent } from '../../shared/components/custom-button/custom-button.component';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -8,7 +9,10 @@ describe('HomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePageComponent]
+      imports: [
+        HomePageComponent,
+        CustomButtonComponent
+      ]
     })
     .compileComponents();
 

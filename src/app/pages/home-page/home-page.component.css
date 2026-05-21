@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* Cambia height: 100% por esto para ocupar TODA la pantalla real del navegador */
+    min-height: 100vh; 
+    justify-content: center; /* Centra en el eje vertical (Y) debido al flex-direction: column */
+    align-items: center;     /* Centra en el eje horizontal (X) */
+   
+    padding: 20px;           /* Evita que el texto toque los bordes en celulares */
+    box-sizing: border-box;
+}
+
+.text {
+    display: flex; /* ¡Ojo! Para que 'gap' y 'flex-direction' funcionen, necesitas activar flex aquí también */
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    max-width: 600px; /* Truco Pro: Evita que el párrafo se estire feo en pantallas gigantes */
+}
+
+.text h1 {
+    margin: 0;
+    font-size: 3rem; /* Tamaño grande imponente */
+    font-weight: 800;
+   
+}
+
+.text p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #94a3b8; /* Un gris elegante para que el H1 resalte más */
+}
+
+.icon{
+    font-size: 60px;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #1e293b; /* Cambiado a gris oscuro/negro */
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    animation: pulse 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  .loader:after {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #1e293b; /* Cambiado a gris oscuro/negro */
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 1s linear infinite;
+  }
+  
+  @keyframes scaleUp {
+    0% { transform: translate(-50%, -50%) scale(0) }
+    60% , 100% { transform: translate(-50%, -50%)  scale(1)}
+  }
+  
+  @keyframes pulse {
+    0% , 60% , 100%{ transform:  scale(1) }
+    80% { transform:  scale(1.2)}
+  }

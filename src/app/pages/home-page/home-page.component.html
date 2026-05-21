@@ -1,1 +1,27 @@
-<p>home-page works!</p>
+<div class="container">
+    @if (currentState() === 'welcome') {
+        <div class="text">
+            <span class="material-symbols-outlined icon">
+                smart_toy
+            </span>
+            <h1>Interact with your data, instantly.</h1>
+            <p>Upload documents and let AI extract insights, answer questions, and summarize contexts in seconds.</p>
+        </div>
+        <div style="margin-top: 30px;">
+            <app-custom-button 
+                text="Upload PDF Document" 
+                (btnClick)="fileInput.click()">
+            </app-custom-button>
+        </div>
+    
+        <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" accept=".pdf,.txt">
+    }
+
+    @if(currentState() === 'loading'){
+        <span class="loader"></span>
+        <h1>Processing data...</h1>
+        <p>Getting your AI assistant ready.</p>
+    }
+    
+</div>
+

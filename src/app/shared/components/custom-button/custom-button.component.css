@@ -1,0 +1,39 @@
+.btn-minimal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio por si en el futuro le metes un icono de una nube */
+    
+    /* Colores - Tema Claro */
+    background-color: #ffffff;
+    color: #1e293b; /* Gris oscuro/azulón, mucho más elegante que el negro puro */
+    border: 1px solid #e2e8f0; /* Borde gris muy sutil */
+    
+    /* Estructura */
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px; /* Redondeado moderno pero no exagerado */
+    cursor: pointer;
+    
+    /* Animación de transición suave */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Sombra plana muy sutil */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto Hover: Al pasar el mouse, el fondo se oscurece un penique y la sombra crece */
+.btn-minimal:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transform: translateY(-1px); /* Efecto sutil de flotado hacia arriba */
+}
+
+/* Efecto Active: Al hacer clic físico, da la sensación de hundirse */
+.btn-minimal:active {
+    background-color: #f1f5f9;
+    transform: translateY(0px);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
