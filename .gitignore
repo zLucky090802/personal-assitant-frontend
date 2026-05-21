@@ -1,5 +1,9 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 .env
+
+# Angular environments (evita subir URLs o llaves privadas de APIs)
+src/environments/environment.ts
+
 # Compiled output
 /dist
 /tmp
