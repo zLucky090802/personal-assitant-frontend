@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CustomButtonComponent } from '../../shared/components/custom-button/custom-button.component';
-import { ApiServicesService } from '../../services/api-services.service';
+import { ApiServices } from '../../services/api-services.service';
 import { ChatWindowComponent } from '../../shared/components/chat-window/chat-window.component';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-  private service = inject(ApiServicesService);
+  private service = inject(ApiServices);
 
   // 2. Control de estado de la pantalla usando Angular Signals
   // Estados posibles: 'welcome' | 'loading' | 'chat'
