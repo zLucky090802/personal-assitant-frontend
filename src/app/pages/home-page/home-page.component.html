@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="{ 'chat-mode': currentState() === 'chat' }">
     @if (currentState() === 'welcome') {
         <div class="text">
             <span class="material-symbols-outlined icon">
@@ -21,6 +21,12 @@
         <span class="loader"></span>
         <h1>Processing data...</h1>
         <p>Getting your AI assistant ready.</p>
+    }
+
+    @if(currentState() === 'chat'){
+        <div class="chat-wrapper">
+            <app-chat-window [sessionId]="currentSessionId()"></app-chat-window>
+        </div>
     }
     
 </div>

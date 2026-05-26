@@ -2,15 +2,13 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* Cambia height: 100% por esto para ocupar TODA la pantalla real del navegador */
     min-height: 100vh; 
-    justify-content: center; /* Centra en el eje vertical (Y) debido al flex-direction: column */
-    align-items: center;     /* Centra en el eje horizontal (X) */
-   
-    padding: 20px;           /* Evita que el texto toque los bordes en celulares */
+    justify-content: center; 
+    align-items: center;     
+    padding: 20px;           
     box-sizing: border-box;
+    background-color: #f8fafc; /* O el color de fondo claro que elegiste */
 }
-
 .text {
     display: flex; /* ¡Ojo! Para que 'gap' y 'flex-direction' funcionen, necesitas activar flex aquí también */
     flex-direction: column;
@@ -72,3 +70,30 @@
     0% , 60% , 100%{ transform:  scale(1) }
     80% { transform:  scale(1.2)}
   }
+
+  /* --- CONTENEDOR DEL CHAT WINDOW --- */
+  .chat-wrapper {
+    width: 100%;
+    max-width: 850px; /* Al alinearse con el max-width de la ventana del chat */
+    display: flex;
+    justify-content: center;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.container.chat-mode {
+    justify-content: flex-start; /* Lleva el chat arriba para que respire, no clavado al centro */
+    padding-top: 40px;          /* Un espacio elegante con el techo del navegador */
+}
+
+/* --- ANIMACIÓN PREMIUM SLIDE UP --- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        /* Empieza 30px más abajo y escalado un penique más pequeño */
+        transform: translateY(30px) scale(0.98); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

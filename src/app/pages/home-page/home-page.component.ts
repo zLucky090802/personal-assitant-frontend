@@ -1,10 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { CustomButtonComponent } from '../../shared/components/custom-button/custom-button.component';
 import { ApiServicesService } from '../../services/api-services.service';
+import { ChatWindowComponent } from '../../shared/components/chat-window/chat-window.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CustomButtonComponent],
+  imports: [
+    CustomButtonComponent,
+    ChatWindowComponent,
+    CommonModule
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
