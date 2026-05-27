@@ -3,19 +3,18 @@
     width: 100%;
 }
 
+/* --- CONTENEDOR PRINCIPAL (AHORA AL 100% DE LA PANTALLA) --- */
 .chat-integration {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 900px; /* Tu ancho original */
-    margin: 0 auto;
-    height: 90vh;
+    width: 100%; /* Ocupa todo el ancho horizontal de la ventana */
+    height: 100vh; /* Fuerza a ocupar todo el alto de la pantalla */
+    position: relative;
+    background-color: #F8FAFC;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* --- ESTADO VACÍO (CENTRADO TOTAL) --- */
-/* En lugar de alinear ítems al centro que rompe el textarea, 
-   usamos un margen superior automático para empujar todo al centro vertical */
 .chat-integration.is-empty {
     padding-top: 18vh; 
 }
@@ -29,23 +28,25 @@
 .empty-state-content h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1e293b; /* Tu gris oscuro de marca */
+    color: #1e293b; 
     margin: 0;
 }
 
 .empty-state-content p {
     font-size: 1rem;
-    color: #94a3b8; /* Gris suave original */
+    color: #94a3b8; 
     margin: 8px 0 0 0;
 }
 
-/* --- ÁREA DE MENSAJES --- */
+/* --- ÁREA DE MENSAJES (CONTROLA EL SCROLL AL BORDE DERECHO) --- */
 .messages-flow {
     flex: 1;
-    overflow-y: auto;
+    width: 100%;
+    overflow-y: auto; /* Aquí se genera la barra de scroll pegada al extremo de la pantalla */
     padding: 30px 0;
     display: flex;
     flex-direction: column;
+    align-items: center; /* Centra horizontalmente las filas de los mensajes al 60% */
     gap: 20px;
 }
 
@@ -53,11 +54,70 @@
     display: none;
 }
 
-/* --- TU BARRA DE INPUT ORIGINAL (RECUPERADA) --- */
+/* --- CONTENEDORES DE MENSAJES (CONFIGURADOS AL 60%) --- */
+.message-row {
+    display: flex;
+    gap: 14px;
+    width: 60%; /* <-- Ocupa el 60% del ancho de la pantalla */
+    max-width: 900px; /* Evita que en monitores gigantes se estire demasiado */
+    align-items: flex-start;
+    animation: messageSlideIn 0.3s ease-out forwards;
+}
+
+/* Cuando el mensaje sea del usuario, lo empujamos a la derecha dentro del bloque del 60% */
+.message-row.user-row {
+    justify-content: flex-end;
+}
+
+/* --- BURBUJAS DE TEXTO --- */
+.message-bubble {
+    max-width: 75%; /* La burbuja aprovecha bien el espacio de la fila */
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+/* Estilo para el mensaje de la IA: Texto plano sobre el fondo sin caja pesada */
+.message-bubble:not(.user-bubble) {
+    background-color: transparent;
+    color: #1e293b;
+    padding-left: 0; 
+}
+
+/* Estilo para el mensaje del Usuario: Una mini cápsula elegante gris suave */
+.message-bubble.user-bubble {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    border-bottom-right-radius: 4px; 
+}
+
+.message-bubble p {
+    margin: 0;
+    white-space: pre-wrap; 
+}
+
+/* --- AVATAR IA --- */
+.ai-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #1e293b;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* --- BARRA DE INPUT (ALINEADA AL 60%) --- */
 .chat-input-area {
     width: 100%;
     padding: 20px 0;
-    background: transparent;
+    background: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el input wrapper */
 }
 
 .input-wrapper {
@@ -67,6 +127,8 @@
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 8px 12px;
+    width: 60%; /* <-- Hace que el input mida exactamente lo mismo que los mensajes */
+    max-width: 900px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     transition: all 0.2s;
 }
@@ -114,7 +176,7 @@
     text-align: center;
 }
 
-/* Animaciones */
+/* --- ANIMACIONES --- */
 .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
 }
@@ -124,62 +186,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- CONTENEDORES DE MENSAJES --- */
-.message-row {
-    display: flex;
-    gap: 14px;
-    width: 100%;
-    align-items: flex-start;
-    animation: messageSlideIn 0.3s ease-out forwards;
-}
-
-/* Cuando el mensaje sea del usuario, lo empujamos a la derecha */
-.message-row.user-row {
-    justify-content: flex-end;
-}
-
-/* --- BURBUJAS DE TEXTO --- */
-.message-bubble {
-    max-width: 70%;
-    padding: 12px 18px;
-    border-radius: 18px;
-    font-size: 0.98rem;
-    line-height: 1.5;
-}
-
-/* Estilo para el mensaje de la IA: Texto plano sobre el fondo sin caja pesada */
-.message-bubble:not(.user-bubble) {
-    background-color: transparent;
-    color: #1e293b;
-    padding-left: 0; /* Se alinea perfecto con el avatar */
-}
-
-/* Estilo para el mensaje del Usuario: Una mini cápsula elegante gris suave */
-.message-bubble.user-bubble {
-    background-color: #f1f5f9;
-    color: #1e293b;
-    border-bottom-right-radius: 4px; /* Efecto bocadillo de chat */
-}
-
-.message-bubble p {
-    margin: 0;
-    white-space: pre-wrap; /* Respeta los saltos de línea de la respuesta */
-}
-
-/* --- AVATAR IA --- */
-.ai-avatar {
-    width: 32px;
-    height: 32px;
-    background-color: #1e293b;
-    color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-/* Animación sutil de entrada de cada mensaje */
 @keyframes messageSlideIn {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }

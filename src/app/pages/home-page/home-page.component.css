@@ -74,7 +74,7 @@
   /* --- CONTENEDOR DEL CHAT WINDOW --- */
   .chat-wrapper {
     width: 100%;
-    max-width: 850px; /* Al alinearse con el max-width de la ventana del chat */
+    max-width: 70%; /* Al alinearse con el max-width de la ventana del chat */
     display: flex;
     justify-content: center;
     animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
