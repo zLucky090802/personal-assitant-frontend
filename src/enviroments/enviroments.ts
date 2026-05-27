@@ -1,4 +1,4 @@
-export const enviroment = {
+export const enviroments = {
     production: false,
-    base_url: 'http://localhost:3003/api'
+    base_url: 'https://personal-assitant-4.onrender.com/api'
 }
