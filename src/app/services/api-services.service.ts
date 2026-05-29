@@ -1,5 +1,5 @@
 import { Inject, inject, Injectable } from '@angular/core';
-import { enviroments } from '../../enviroments/enviroments';
+import { enviroments } from '../../enviroments/environments';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
