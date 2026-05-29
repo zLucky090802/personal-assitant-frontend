@@ -1,49 +1,49 @@
-
 # 🌐 IndexMe - AI Personal Assistant (Frontend)
 
-Este es el cliente web de **IndexMe**, una aplicación bilateral e inteligente diseñada para conectar usuarios con sus propios documentos indexados mediante Inteligencia Artificial. La interfaz cuenta con un diseño minimalista y moderno enfocado en la experiencia de usuario (UX/UI).
+This is the web client for **IndexMe**, a smart, bilateral platform designed to connect users with their own indexed documents using Artificial Intelligence. The interface features a modern, minimalist design focused on exceptional User Experience (UX/UI).
 
-Desplegado en producción a través de: **[Netlify](https://index-me.netlify.app)**
+Deployed in production at: **[Netlify](https://index-me.netlify.app)**
 
-## 🚀 Tecnologías Utilizadas
+## 🚀 Tech Stack
 
 * **Framework:** Angular (v17+)
-* **Estilos y Componentes:** HTML5, CSS3 / SCSS (Diseño responsivo y minimalista)
-* **Gestión de Estado y Rutas:** Angular Router & Reactive Forms
-* **Comunicación HTTP:** HttpClient para consumo de API RESTful con manejo de CORS
+* **Styles & Components:** HTML5, CSS3 / SCSS (Responsive and minimalist design)
+* **State & Route Management:** Angular Router & Reactive Forms
+* **HTTP Communication:** HttpClient for RESTful API consumption with CORS handling
 
-## 🛠️ Configuración Local
+## 🛠️ Local Setup
 
-### Prerrequisitos
-Asegúrate de tener instalado [Node.js](https://nodejs.org/) (versión 18 o superior).
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed (version 18 or higher).
 
-### Instalar dependencias
+### Install dependencies
 ```bash
 npm install
-Configuración del Entorno (Variables de Entorno)
-Crea o edita los archivos de configuración en src/environments/ para apuntar a tu servidor local o de producción:
+Environment Configuration (Environment Variables)
+Create or edit the configuration files inside src/environments/ to point to your local or production server:
 
-environment.ts (Desarrollo):
-
-TypeScript
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8000/api'
-};
-environment.prod.ts (Producción):
+environment.ts (Development):
 
 TypeScript
-export const environment = {
-  production: true,
-  apiUrl: '[https://personal-assitant-5.onrender.com/api](https://personal-assitant-5.onrender.com/api)'
-};
-Servidor de desarrollo
-Corre el comando para levantar el entorno local en http://localhost:4200/:
+    export const environment = {
+      production: false,
+      apiUrl: 'http://localhost:8000/api'
+    };
+    ```
+* **`environment.prod.ts` (Production):**
+```typescript
+    export const environment = {
+      production: true,
+      apiUrl: '[https://personal-assitant-5.onrender.com/api](https://personal-assitant-5.onrender.com/api)'
+    };
+    ```
 
-Bash
+### Development Server
+Run the following command to start the local development environment at `http://localhost:4200/`:
+```bash
 ng serve
-Compilación para Producción (Build)
-Para generar los archivos estáticos listos para desplegar en Netlify:
+Production Build
+To generate the static production-ready files for deploying to Netlify:
 
 Bash
 ng build --configuration production
