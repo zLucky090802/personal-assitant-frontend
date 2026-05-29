@@ -2,8 +2,8 @@
 .env
 
 # Angular environments (evita subir URLs o llaves privadas de APIs)
-./src/environments/environment.ts
 
+src/enviroments/
 # Compiled output
 /dist
 /tmp
